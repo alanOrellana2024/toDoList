@@ -27,7 +27,7 @@ class ListaTareas {
     }
 }
 
-// Variables
+// Creación de las Variables
 const taskInput = document.getElementById('taskInput');
 const addTaskButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
@@ -36,6 +36,7 @@ const addListButton = document.getElementById('addList');
 const listasTareas = {
     default: new ListaTareas('Lista Principal')
 };
+
 // Función para agregar una tarea
 function agregarTarea() {
     const tareaTexto = taskInput.value.trim();
@@ -103,3 +104,15 @@ function actualizarListasTareas() {
         }
     }
 }
+
+// Event Listeners
+addTaskButton.addEventListener('click', agregarTarea);
+addListButton.addEventListener('click', agregarLista);
+taskListSelect.addEventListener('change', () => {
+    const listaSeleccionada = taskListSelect.value;
+    actualizarVista(listaSeleccionada);
+});
+
+// Actualizar la vista inicial
+actualizarVista('default');
+actualizarListasTareas();
